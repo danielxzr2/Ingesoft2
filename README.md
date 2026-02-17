@@ -10,21 +10,22 @@ Este proyecto es una implementación práctica de un flujo de trabajo de **Integ
 
 ## 📸 Evidencia del Pipeline Exitoso
 
-A continuación se muestra la ejecución correcta del flujo de trabajo en GitHub Actions.
+## 📸 Evidencia del Pipeline Exitoso
 
-<img width="714" height="301" alt="GithubActions" src="https://github.com/user-attachments/assets/226303ff-2829-43c5-aa94-eec269a86d83" />
+### 1. Visión General del Workflow
+Ejecución correcta del flujo de trabajo en GitHub Actions:
 
-**Donde se evidencia la instalación de dependencias:**
+<div align="center">
+  <img width="800" alt="GithubActions" src="https://github.com/user-attachments/assets/226303ff-2829-43c5-aa94-eec269a86d83" />
+</div>
 
-<img width="742" height="529" alt="build2" src="https://github.com/user-attachments/assets/f1d71fcb-a30e-4f1a-8354-0a0554c69e62" />
+### 2. Detalle de los Pasos (Logs)
+A continuación se detalla la ejecución exitosa de cada etapa crítica del pipeline:
 
-**La ejecución de pruebas:**
-
-<img width="725" height="565" alt="test" src="https://github.com/user-attachments/assets/13500ce5-5461-465c-8bcc-515762d66963" />
-
-**Y despliegue:**
-
-<img width="734" height="423" alt="deploy" src="https://github.com/user-attachments/assets/77f98401-b475-492e-8a61-31fab2ece33d" />
+| 📦 1. Instalación de Dependencias | 🧪 2. Ejecución de Pruebas | 🚀 3. Despliegue a Producción |
+| :---: | :---: | :---: |
+| <img src="https://github.com/user-attachments/assets/f1d71fcb-a30e-4f1a-8354-0a0554c69e62" width="100%"> | <img src="https://github.com/user-attachments/assets/13500ce5-5461-465c-8bcc-515762d66963" width="100%"> | <img src="https://github.com/user-attachments/assets/77f98401-b475-492e-8a61-31fab2ece33d" width="100%"> |
+| *Dependencias instaladas limpiamente (`npm ci`)* | *Tests unitarios y cobertura aprobados* | *Subida exitosa a la rama `gh-pages`* |
 
 ---
 
