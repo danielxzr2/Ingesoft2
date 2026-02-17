@@ -14,14 +14,17 @@ A continuación se muestra la ejecución correcta del flujo de trabajo en GitHub
 
 <img width="714" height="301" alt="GithubActions" src="https://github.com/user-attachments/assets/226303ff-2829-43c5-aa94-eec269a86d83" />
 
-Donde se evidencia la instalación de dependencias
-<img width="746" height="541" alt="build" src="https://github.com/user-attachments/assets/bd285dc2-14c9-4f9f-8fd8-80e32e4b70c6" />
+Donde se evidencia la instalación de dependencias:
+
+<img width="742" height="529" alt="build2" src="https://github.com/user-attachments/assets/f1d71fcb-a30e-4f1a-8354-0a0554c69e62" />
 
 
-La ejecución de pruebas 
+La ejecución de pruebas:
+
 <img width="725" height="565" alt="test" src="https://github.com/user-attachments/assets/13500ce5-5461-465c-8bcc-515762d66963" />
 
 Y despliegue:
+
 <img width="734" height="423" alt="deploy" src="https://github.com/user-attachments/assets/77f98401-b475-492e-8a61-31fab2ece33d" />
 
 ---
@@ -137,29 +140,39 @@ Este proyecto utiliza **Jest** para medir qué porcentaje del código está cubi
    ```bash
    npm test
    
+2. Busca la carpeta generada: coverage/lcov-report/index.html
+
+3. Abre ese archivo en tu navegador para ver línea por línea qué está testeado.
+   
 ---
 
 ## 🔄 Arquitectura del Pipeline (CI/CD)
 
-El archivo `.github/workflows/ci.yml` orquesta todo el proceso automático:
+El flujo de trabajo automatizado está definido en `.github/workflows/ci.yml` y se divide en dos etapas secuenciales (Jobs):
 
-### 1. Integración Continua (CI) - Job: `test`
-Se ejecuta en cada `push` o `pull_request` hacia la rama `main`.
-1.  **Checkout:** Descarga el código del repositorio.
-2.  **Setup Node:** Configura el entorno con Node.js v18.
-3.  **Install:** Instala las dependencias limpias (`npm ci`).
-4.  **Test:** Ejecuta la suite de pruebas con Jest y genera reporte de cobertura.
+### 1. 🧪 Integración Continua (Job: `test`)
+Este trabajo se encarga de garantizar la integridad del código antes de cualquier intento de despliegue.
 
-### 2. Entrega Continua (CD) - Job: `deploy`
-Se ejecuta **solo si los tests pasan** y estamos en la rama `main`.
-1.  **Build:** Genera un archivo `index.html` dinámico que incluye:
-    * Fecha del despliegue.
-    * Hash del último commit (SHA).
-2.  **Deploy:** Sube el archivo generado a la rama `gh-pages` utilizando la acción `peaceiris/actions-gh-pages`, actualizando el sitio web automáticamente.
+* **Disparadores (`on`):** Se activa automáticamente en cada `push` o `pull_request` dirigido a la rama `main`.
+* **Entorno:** Se ejecuta sobre un contenedor virtual **Ubuntu Latest**.
+* **Pasos Clave:**
+    1.  **Checkout:** Utiliza `actions/checkout@v4` para clonar el repositorio en el entorno virtual.
+    2.  **Environment Setup:** Configura Node.js versión 18.
+    3.  **Clean Install:** Ejecuta `npm ci` (en lugar de `npm install`). Esto asegura una instalación determinista basada exactamente en el archivo `package-lock.json`, vital para entornos de CI.
+    4.  **Unit Testing:** Ejecuta `npm test`. Si **una sola prueba falla**, el proceso se detiene inmediatamente y marca el commit como fallido (❌).
+
+### 2. 🚀 Entrega Continua (Job: `deploy`)
+Este trabajo se encarga de publicar la aplicación, pero tiene **candados de seguridad** estrictos.
+
+* **Dependencia Crítica (`needs: test`):** Este job **espera** a que el job `test` termine exitosamente. Si las pruebas fallan, el despliegue nunca inicia.
+* **Condición de Rama (`if`):** Verifica `github.ref == 'refs/heads/main'`. Esto asegura que los cambios en ramas de desarrollo (features) se prueben, pero no rompan el sitio público hasta que se fusionen a `main`.
+* **Permisos de Escritura:** Se configuran permisos explícitos (`contents: write`) para permitir que el bot de GitHub Actions pueda hacer `git push` a la rama del repositorio.
+* **Generación de Artefactos:**
+    * Se crea un directorio `public` al vuelo.
+    * Se inyectan variables de entorno dinámicas como `$(date)` y `$GITHUB_SHA` (el ID único del commit) en un archivo HTML para trazabilidad.
+* **Despliegue:** Utiliza la acción `peaceiris/actions-gh-pages` para subir la carpeta generada a la rama `gh-pages`, lo que actualiza el sitio web en vivo.
 
 ---
-
-
 
 ## 👥 Autor
 
