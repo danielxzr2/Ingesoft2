@@ -158,7 +158,10 @@ Este proyecto utiliza **Jest** para medir qué porcentaje del código está cubi
 2. Busca la carpeta generada: coverage/lcov-report/index.html
 
 3. Abre ese archivo en tu navegador para ver línea por línea qué está testeado.
-   
+
+
+<img width="763" height="247" alt="coverage" src="https://github.com/user-attachments/assets/b747c364-a4d8-4080-b3eb-faeb58dedae7" />
+
 ---
 
 ## 🔄 Arquitectura del Pipeline (CI/CD)
