@@ -10,8 +10,6 @@ Este proyecto es una implementación práctica de un flujo de trabajo de **Integ
 
 ## 📸 Evidencia del Pipeline Exitoso
 
-## 📸 Evidencia del Pipeline Exitoso
-
 ### 1. Visión General del Workflow
 Ejecución correcta del flujo de trabajo en GitHub Actions:
 
