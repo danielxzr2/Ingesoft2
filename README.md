@@ -8,6 +8,24 @@ Este proyecto es una implementación práctica de un flujo de trabajo de **Integ
 
 ---
 
+## 📸 Evidencia del Pipeline Exitoso
+
+A continuación se muestra la ejecución correcta del flujo de trabajo en GitHub Actions.
+
+<img width="714" height="301" alt="GithubActions" src="https://github.com/user-attachments/assets/226303ff-2829-43c5-aa94-eec269a86d83" />
+
+Donde se evidencia la instalación de dependencias
+<img width="746" height="541" alt="build" src="https://github.com/user-attachments/assets/bd285dc2-14c9-4f9f-8fd8-80e32e4b70c6" />
+
+
+La ejecución de pruebas 
+<img width="725" height="565" alt="test" src="https://github.com/user-attachments/assets/13500ce5-5461-465c-8bcc-515762d66963" />
+
+Y despliegue:
+<img width="734" height="423" alt="deploy" src="https://github.com/user-attachments/assets/77f98401-b475-492e-8a61-31fab2ece33d" />
+
+---
+
 ## 🚀 Despliegue en Vivo (CD)
 
 El pipeline despliega automáticamente una página de estado cada vez que se aprueban los cambios y pasan las pruebas en la rama `main`.
@@ -52,6 +70,25 @@ mi-proyecto/
 
 ---
 
+## 💡 Desafío Técnico y Solución
+
+Durante la implementación del pipeline de Despliegue Continuo (CD), nos enfrentamos al siguiente reto:
+
+**El Problema:**
+Al intentar realizar el push automático a la rama `gh-pages`, el pipeline fallaba con un error `403 Forbidden`.
+> `remote: Permission to danielxzr2/Ingesoft2.git denied to github-actions[bot].`
+
+**La Causa:**
+Los tokens automáticos de GitHub Actions (`GITHUB_TOKEN`) tienen, por defecto, permisos de solo lectura para mayor seguridad.
+
+**La Solución:**
+Configuramos explícitamente los permisos de escritura en el repositorio:
+1. Navegamos a *Settings > Actions > General*.
+2. En *Workflow permissions*, habilitamos **"Read and write permissions"**.
+3. Adicionalmente, agregamos el permiso `contents: write` en el archivo YAML del workflow.
+
+---
+
 ## ⚙️ Instalación y Uso Local
 
 Para ejecutar este proyecto en tu máquina local:
@@ -92,6 +129,16 @@ La aplicación expone los siguientes endpoints REST:
 
 ---
 
+## 🧪 Reporte de Cobertura de Código
+
+Este proyecto utiliza **Jest** para medir qué porcentaje del código está cubierto por pruebas. Para ver el reporte detallado en HTML:
+
+1. Ejecuta las pruebas:
+   ```bash
+   npm test
+   
+---
+
 ## 🔄 Arquitectura del Pipeline (CI/CD)
 
 El archivo `.github/workflows/ci.yml` orquesta todo el proceso automático:
@@ -112,6 +159,9 @@ Se ejecuta **solo si los tests pasan** y estamos en la rama `main`.
 
 ---
 
+
+
 ## 👥 Autor
 
-**Daniel** - Estudiante de Ingeniería de Software
+**Daniel** - Estudiante de Ingeniería de Sistemas y Computación
+
