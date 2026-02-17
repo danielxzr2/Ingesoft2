@@ -160,7 +160,7 @@ Este proyecto utiliza **Jest** para medir qué porcentaje del código está cubi
 3. Abre ese archivo en tu navegador para ver línea por línea qué está testeado.
 
 
-<img width="763" height="247" alt="coverage" src="https://github.com/user-attachments/assets/b747c364-a4d8-4080-b3eb-faeb58dedae7" />
+<img width="763" height="247" alt="coverage" src="https://github.com/user-attachments/assets/0a59eeab-c80d-4643-a903-bfa1734aed23" />
 
 ---
 
