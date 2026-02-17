@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1771287942685" clover="3.2.0">
-  <project timestamp="1771287942685" name="All files">
+<coverage generated="1771293390286" clover="3.2.0">
+  <project timestamp="1771293390286" name="All files">
     <metrics statements="13" coveredstatements="10" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="3" elements="21" coveredelements="14" complexity="0" loc="13" ncloc="13" packages="1" files="1" classes="1"/>
     <file name="app.js" path="/home/danielxzr/Universidad/taller-cicd/Ingesoft2/src/app.js">
       <metrics statements="13" coveredstatements="10" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="3"/>
