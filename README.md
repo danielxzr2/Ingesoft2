@@ -139,24 +139,11 @@ La fiabilidad del proyecto se garantiza mediante una suite de pruebas de integra
 
 ### 📋 Escenarios Cubiertos
 
-Las pruebas cubren tanto el "Camino Feliz" (Happy Path) como los casos de error (Sad Path):
-
 | Tipo de Prueba | Endpoint | Resultado Esperado | Descripción |
 | :--- | :--- | :--- | :--- |
 | ✅ **Happy Path** | `GET /` | `200 OK` | Verifica que el servidor inicia y responde el mensaje de bienvenida. |
 | ✅ **Happy Path** | `GET /health` | `200 OK` | Confirma que el servicio está saludable (Health Check). |
 | ✅ **Happy Path** | `GET /version` | `200 OK` | Valida que la versión retornada coincide con la esperada (`1.0.0`). |
-| ❌ **Sad Path** | `GET /ruta-falsa` | `404 Not Found` | **Prueba Negativa:** Asegura que el servidor maneje correctamente rutas inexistentes sin colapsar. |
-
-### 🔍 Código de Ejemplo (Prueba Negativa)
-Un aspecto clave de este pipeline es validar cómo el sistema maneja los errores. A continuación se muestra la implementación de la prueba de "Ruta No Encontrada":
-
-```javascript
-test('GET /unknown-route should return 404 status', async () => {
-    const response = await request(app).get('/ruta-que-no-existe');
-    expect(response.status).toBe(404);
-});
-```
 
 ---
 
