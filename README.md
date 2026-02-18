@@ -194,5 +194,5 @@ Este trabajo se encarga de publicar la aplicación, pero tiene **candados de seg
 
 ## 👥 Autor
 
-**Daniel** - Estudiante de Ingeniería de Sistemas y Computación
+**Daniel Alberto Garzon Fraile** - Estudiante de Ingeniería de Sistemas y Computación
 
