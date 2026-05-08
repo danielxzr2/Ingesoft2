@@ -1,5 +1,3 @@
-markdown_content = """# Informe de Tarea: Consumo de API REST con Postman
-
 **Estudiante:** Daniel Garzón  
 **API Seleccionada:** [Rick and Morty API](https://rickandmortyapi.com/)  
 
