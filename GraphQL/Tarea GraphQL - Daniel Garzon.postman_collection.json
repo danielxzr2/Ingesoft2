@@ -1,0 +1,198 @@
+{
+  "info": {
+    "_postman_id": "c1bd2912-c57e-4968-8f14-6e2935081d4b",
+    "name": "Tarea GraphQL - Daniel Garzon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54569011",
+    "_collection_link": "https://go.postman.co/collection/54569011-c1bd2912-c57e-4968-8f14-6e2935081d4b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Continents",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query GetContinents {\n  continents {\n    code\n    name\n  }\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://countries.trevorblades.com/graphql",
+          "protocol": "https",
+          "host": [
+            "countries",
+            "trevorblades",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Countries-Continents",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query GetCountriesWithContinent {\n  countries {\n    name\n    capital\n    continent {\n      name\n    }\n  }\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://countries.trevorblades.com/graphql",
+          "protocol": "https",
+          "host": [
+            "countries",
+            "trevorblades",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Colombia Details",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query GetColombiaDetails {\n  country(code: \"CO\") {\n    name\n    native\n    capital\n    currency\n    emoji\n  }\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://countries.trevorblades.com/graphql",
+          "protocol": "https",
+          "host": [
+            "countries",
+            "trevorblades",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Languages",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query GetLanguages {\n  languages {\n    code\n    name\n    native\n  }\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://countries.trevorblades.com/graphql",
+          "protocol": "https",
+          "host": [
+            "countries",
+            "trevorblades",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get SA countries",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "query GetSouthAmericanCountries {\n  continent(code: \"SA\") {\n    name\n    countries {\n      name\n      capital\n    }\n  }\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "https://countries.trevorblades.com/graphql",
+          "protocol": "https",
+          "host": [
+            "countries",
+            "trevorblades",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Test 1: Verificar que la respuesta sea 200 OK",
+          "pm.test(\"Status code is 200\", function () {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "// Test 2: Verificar que no haya errores de GraphQL en el cuerpo",
+          "pm.test(\"No tiene errores de GraphQL\", function () {",
+          "    const jsonData = pm.response.json();",
+          "    pm.expect(jsonData.errors).to.be.undefined;",
+          "});",
+          "",
+          "// Test 3 (Opcional): Verificar que los datos existen",
+          "pm.test(\"La respuesta contiene datos (data object)\", function () {",
+          "    const jsonData = pm.response.json();",
+          "    pm.expect(jsonData.data).to.be.an('object');",
+          "});"
+        ]
+      }
+    }
+  ]
+}

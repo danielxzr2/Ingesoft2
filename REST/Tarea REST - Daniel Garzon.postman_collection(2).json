@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "1eb3d558-375a-4fe2-9cd7-13aa1f3e79f1",
+    "name": "Tarea REST - Daniel Garzon",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54569011",
+    "_collection_link": "https://go.postman.co/collection/54569011-1eb3d558-375a-4fe2-9cd7-13aa1f3e79f1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Query Params Request",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://rickandmortyapi.com/api/character/?name=rick&status=alive",
+          "protocol": "https",
+          "host": [
+            "rickandmortyapi",
+            "com"
+          ],
+          "path": [
+            "api",
+            "character",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "rick"
+            },
+            {
+              "key": "status",
+              "value": "alive"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://rickandmortyapi.com/api/character/2",
+          "protocol": "https",
+          "host": [
+            "rickandmortyapi",
+            "com"
+          ],
+          "path": [
+            "api",
+            "character",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all resources",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://rickandmortyapi.com/api/",
+          "protocol": "https",
+          "host": [
+            "rickandmortyapi",
+            "com"
+          ],
+          "path": [
+            "api",
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// Test 1: Verificar que el código de estado sea 200 (OK)",
+          "pm.test(\"Status code is 200\", function () {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "// Test 2: Verificar que la respuesta sea un JSON y contenga información",
+          "pm.test(\"La respuesta tiene el formato correcto\", function () {",
+          "    var jsonData = pm.response.json();",
+          "    pm.expect(jsonData).to.be.an('object');",
+          "    pm.expect(jsonData.info).to.have.property('count');",
+          "});",
+          "",
+          "// Test 3: Verificar que el tiempo de respuesta sea rápido",
+          "pm.test(\"Tiempo de respuesta menor a 500ms\", function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(500);",
+          "});"
+        ]
+      }
+    }
+  ]
+}
