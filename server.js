@@ -170,7 +170,7 @@ const server = http.createServer(async (req, res) => {
     if (task.userId !== usuario.userId)
       return send(res, 403, { error: 'No autorizado' });
     // TODO 4: Leer el body y actualizar los campos recibidos
-    const body = await getBody(req);
+    const body = await readBody(req);
     if (body.title) task.title = body.title;
     if (body.description) task.description = body.description;
     if (body.status) task.status = body.status;
